@@ -602,26 +602,7 @@ function seedCards(){
   const exists=state.cards.some(c=>c.boardId===devBoard.id&&c.titulo.includes('Manuales con ia'));
   if(!exists){
     const seeds=[
-      {t:'Manuales con ia (MPV)',c:'terminado',f:'2026-05-29',i:'alto',a:'Marcos',co:'',cm:'2026-05-29'},
-      {t:'Verificadores',c:'terminado',f:'2025-12-19',i:'alto',a:'Marcos',co:'',cm:'2025-12-19'},
-      {t:'Verificadores interfaz de administraci\u00f3n',c:'terminado',f:'2026-01-19',i:'medio',a:'Marcos',co:'',cm:'2026-01-19'},
-      {t:'Parking dino - Con publicidad',c:'terminado',f:'2026-03-30',i:'medio',a:'Marcos',co:'',cm:'2026-03-30'},
-      {t:'Integraci\u00f3n manual prueba Napse',c:'terminado',f:'2026-05-22',i:'alto',a:'Marcos',co:'',cm:'2026-05-22'},
-      {t:'Reporte Etiquetas DynaPOS',c:'terminado',f:'2026-03-05',i:'bajo',a:'',co:'',cm:'2026-03-05'},
-      {t:'Anulaci\u00f3n de Cobros Tipre (nueva interfaz en Reportes Dino)',c:'terminado',f:'2026-03-06',i:'medio',a:'Marcos',co:'',cm:'2026-03-06'},
-      {t:'[CANCELADO] Proyecto Reemplazo Loyal',c:'cancelado',f:'2026-02-06',i:'bajo',a:'Marcos',co:'cancelado por RB',cm:''},
-      {t:'[CANCELADO] Aplicaci\u00f3n Stock sin Venta y Gesti\u00f3n de Stock',c:'cancelado',f:'2026-12-31',i:'bajo',a:'',co:'cancelado - se utilizar\u00e1 sistema externo',cm:''},
-      {t:'[CANCELADO] Factura electr\u00f3nica MAKE Enero - Febrero 2026',c:'cancelado',f:'2026-12-31',i:'bajo',a:'Marcos',co:'reemplazado por n8n',cm:''},
-      {t:'Parking dino - solicitado cambio de interfaz a invel - Actualizacion Calipso',c:'progreso',f:'2026-12-31',i:'alto',a:'Marcos',co:'',cm:''},
-      {t:'Tablas propias de impleDino - limpieza',c:'progreso',f:'2026-12-31',i:'alto',a:'Marcos',co:'',cm:''},
-      {t:'Correcci\u00f3n de funciones impleDino',c:'progreso',f:'2026-12-31',i:'alto',a:'Marcos',co:'',cm:''},
-      {t:'Clusterizaci\u00f3n (agrupado funciones compra)',c:'progreso',f:'2026-12-31',i:'alto',a:'Marcos',co:'',cm:''},
-      {t:'Alta de sucursales',c:'progreso',f:'2026-12-31',i:'alto',a:'Marcos',co:'',cm:''},
-      {t:'Integraci\u00f3n con balanzas kretz - pendiente documentaci\u00f3n bajo nivel',c:'progreso',f:'2026-12-31',i:'alto',a:'Marcos',co:'',cm:''},
-      {t:'Integraci\u00f3n circuito carnicer\u00edas con faena Propia',c:'progreso',f:'2026-12-31',i:'alto',a:'Marcos',co:'',cm:''},
-      {t:'Integraci\u00f3n Fligoo - sistema alta de productos',c:'progreso',f:'2026-12-31',i:'alto',a:'Marcos',co:'',cm:''},
-      {t:'Integraci\u00f3n Napse (desarrollo de apis de integraci\u00f3n)',c:'progreso',f:'2026-12-31',i:'alto',a:'Marcos',co:'',cm:''},
-    ];
+  ];
     seeds.forEach(s=>{
       state.cards.push({
         id:uid(),boardId:devBoard.id,columna:s.c,
@@ -637,21 +618,7 @@ function seedCards(){
   // Cristian cards
   if(!state.cards.some(c=>c.boardId===devBoard.id&&c.titulo.includes('Segmentaci\u00f3n de encuestas'))){
     const cristianSeeds=[
-      {t:'Segmentaci\u00f3n de encuestas en Humand',c:'progreso',f:'2026-06-24',i:'alto',a:'Cristian',co:'',cm:'',
-        d:'Jimena Guzman reclam\u00f3 que hay segmentaciones que no deber\u00edan estar (puestos, sectores, \u00e1reas). Marcelo Urriche dice que es importante porque la encuesta de clima laboral ser\u00e1 por este medio.'},
-      {t:'Integraci\u00f3n de capacitaciones entre Humand y Nucleus',c:'progreso',f:'2026-06-24',i:'alto',a:'Cristian',co:'',cm:'',
-        d:'Matias Coulter revisa nueva forma de segmentar Humand. Se reclam\u00f3 a Nucleus el 26/06 porque carga masiva de cursos no funciona.'},
-      {t:'C\u00f3digos nuevos para el turnero',c:'progreso',f:'2026-06-26',i:'medio',a:'Cristian',co:'',cm:'',
-        d:'Mart\u00edn Ugarte y Carlos Capozo presentaron nuevos c\u00f3digos para carnicer\u00eda AV.'},
-      {t:'Errores en la aplicaci\u00f3n Club Dino',c:'progreso',f:'2026-06-26',i:'alto',a:'Cristian',co:'',cm:'',
-        d:'Agostina Soto present\u00f3 errores al ingresar a la aplicaci\u00f3n Club Dino.'},
-      {t:'Migraci\u00f3n de reporter\u00eda Dino Vencimientos',c:'pendiente',f:'2026-12-31',i:'medio',a:'Cristian',co:'',cm:'',
-        d:'Ayuda para migrar reporte Operaciones > Pr\u00f3ximos Vencimientos. Solicitado por Alejandro Fanin.'},
-      {t:'Pruebas para Pablo (servidor DS03)',c:'progreso',f:'2026-12-31',i:'alto',a:'Cristian',co:'',cm:'',
-        d:'Revisar m\u00e9todo Recepci\u00f3n > Modificar remito para permitir ingreso sin pendientes en OC.'},
-      {t:'Capacitaci\u00f3n a Marketing sobre WordPress',c:'pendiente',f:'2026-12-31',i:'bajo',a:'Cristian',co:'',cm:'',
-        d:'Capacitaci\u00f3n sobre Elementor y Gravity Forms para vouchers promocionales con QR de Tipre.'},
-    ];
+      ];
     cristianSeeds.forEach(s=>{
       state.cards.push({
         id:uid(),boardId:devBoard.id,columna:s.c,
