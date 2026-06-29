@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Kanban</title>
+<title>Kanban 🦖</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%233b82f6'/%3E%3Crect x='5' y='7' width='6' height='18' rx='1.5' fill='%23fff' opacity='.9'/%3E%3Crect x='13' y='7' width='6' height='18' rx='1.5' fill='%23fff' opacity='.9'/%3E%3Crect x='21' y='7' width='6' height='18' rx='1.5' fill='%23fff' opacity='.9'/%3E%3Crect x='5' y='20' width='6' height='2' rx='.5' fill='%23f59e0b'/%3E%3Crect x='13' y='16' width='6' height='2' rx='.5' fill='%2322c55e'/%3E%3Crect x='21' y='12' width='6' height='2' rx='.5' fill='%23ef4444'/%3E%3C/svg%3E">
 <style>
 :root {
@@ -291,7 +291,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary)}
 <body>
 
 <header id="header">
-  <div class="logo">Kanban</div>
+  <div class="logo">Kanban 🦖</div>
   <nav class="tabs">
     <button class="tab active" data-view="board">Tablero</button>
     <button class="tab" data-view="dashboard">Dashboard</button>
@@ -570,70 +570,15 @@ function initState(){
   }
   if(!state||!state.boards||!state.cards){
     state={
-      boards:[
-        {id:uid(),nombre:'Desarrollo',miembros:['Marcos'],createdAt:new Date().toISOString()},
-        {id:uid(),nombre:'Automatizaci\u00f3n',miembros:[],createdAt:new Date().toISOString()},
-      ],
+      boards:[],
       cards:[]
     };
     saveState();
   }
   if(!currentBoardId&&state.boards.length>0)currentBoardId=state.boards[0].id;
   if(!currentPeriodStart)currentPeriodStart=getPeriodStart(new Date(),currentPeriod);
-  seedCards();
 }
 
-function seedCards(){
-  const flag='kanban_seed_v6';
-  if(localStorage.getItem(flag))return;
-  const devBoard=state.boards.find(b=>b.nombre==='Desarrollo');
-  if(!devBoard)return;
-  if(!devBoard.miembros.includes('Marcos'))devBoard.miembros.push('Marcos');
-  if(!devBoard.miembros.includes('Cristian'))devBoard.miembros.push('Cristian');
-
-  // Migration: move existing [CANCELADO] cards from terminado to cancelado
-  state.cards.forEach(c=>{
-    if(c.titulo.startsWith('[CANCELADO]')&&c.columna==='terminado'){
-      c.columna='cancelado';
-      c.completadaEn=null;
-    }
-  });
-
-  const exists=state.cards.some(c=>c.boardId===devBoard.id&&c.titulo.includes('Manuales con ia'));
-  if(!exists){
-    const seeds=[
-  ];
-    seeds.forEach(s=>{
-      state.cards.push({
-        id:uid(),boardId:devBoard.id,columna:s.c,
-        titulo:s.t,descripcion:s.d||'',fechaCompromiso:s.f,impacto:s.i,
-        asignadoA:s.a,comentarioBloqueo:s.co,
-        createdAt:new Date().toISOString(),
-        completadaEn:s.cm||null,
-        updatedAt:new Date().toISOString(),
-      });
-    });
-  }
-
-  // Cristian cards
-  if(!state.cards.some(c=>c.boardId===devBoard.id&&c.titulo.includes('Segmentaci\u00f3n de encuestas'))){
-    const cristianSeeds=[
-      ];
-    cristianSeeds.forEach(s=>{
-      state.cards.push({
-        id:uid(),boardId:devBoard.id,columna:s.c,
-        titulo:s.t,descripcion:s.d||'',fechaCompromiso:s.f,impacto:s.i,
-        asignadoA:s.a,comentarioBloqueo:s.co,
-        createdAt:new Date().toISOString(),
-        completadaEn:s.cm||null,
-        updatedAt:new Date().toISOString(),
-      });
-    });
-  }
-
-  saveState();
-  localStorage.setItem(flag,'1');
-}
 
 function saveState(){
   localStorage.setItem(STORAGE_KEY,JSON.stringify(state));
